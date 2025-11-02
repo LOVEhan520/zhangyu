@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>520份专属惊喜🎃</title>
+    <style>
+        /* 保留万圣节界面氛围：深紫渐变背景+装饰 */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #2c0b1e 0%, #5a2e40 100%);
+            background-size: 200% 200%;
+            animation: bgShift 15s ease infinite;
+            font-family: "Microsoft YaHei", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 保留万圣节角落装饰（不影响核心功能） */
+        .halloween-deco {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+        .bat1 { top: 20px; left: 20px; animation-delay: 0s; }
+        .bat2 { bottom: 20px; right: 20px; animation-delay: 2s; }
+        .spider { top: 20px; right: 20px; animation-delay: 4s; }
+
+        /* 保留南瓜橙主题按钮（视觉氛围） */
+        .start-btn {
+            padding: 18px 36px;
+            font-size: 22px;
+            background-color: #ff9500;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 149, 0, 0.5);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .start-btn:hover {
+            background-color: #ff7a00;
+            transform: scale(1.08);
+            box-shadow: 0 0 30px rgba(255, 149, 0, 0.8);
+        }
+
+        /* 弹窗恢复原样式：通用温馨提示风格，去掉万圣节文字 */
+        .tip-box {
+            position: absolute;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeIn 0.3s ease-in-out;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .tip-header {
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: #333;
+            background-color: rgba(255,255,255,0.9);
+        }
+        .tip-header .icon { margin-right: 8px; color: #ff6b6b; } /* 恢复原粉色图标色 */
+        .tip-content {
+            padding: 14px;
+            text-align: center;
+            font-size: 16px;
+            background-color: white;
+        }
+        /* 弹窗颜色恢复原浅色系，去掉万圣节专属色 */
+        .color1 { background-color: #e6f3f8; }
+        .color2 { background-color: #f8f5e6; }
+        .color3 { background-color: #f8e6e6; }
+        .color4 { background-color: #e6f8e6; }
+        .color5 { background-color: #f0e6f8; }
+        .color6 { background-color: #e6f0f8; }
+
+        /* 保留界面动画，维持氛围 */
+        @keyframes bgShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.6); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 保留万圣节装饰，维持界面氛围 -->
+    <div class="halloween-deco bat1">🦇</div>
+    <div class="halloween-deco bat2">🦇</div>
+    <div class="halloween-deco spider">🕷️</div>
+
+    <!-- 按钮保留南瓜橙风格，文字简化为通用惊喜 -->
+    <button class="start-btn" onclick="startSurprise()">
+        🎁 开启520份专属惊喜
+    </button>
+
+    <script>
+        // 弹窗恢复原通用温馨提示内容，去掉万圣节元素
+        const tips = [
+            "学会爱自己，才能更好地爱别人",
+            "我想你了",
+            "顺顺利利",
+            "多喝水哦~",
+            "金榜题名",
+            "保持微笑呀",
+            "保持好心情",
+            "记得好好护肤",
+            "好好爱自己",
+            "早点休息哦",
+            "每天都要开心",
+            "一切都会好起来的",
+            "你值得被温柔对待"
+        ];
+        const colors = ["color1", "color2", "color3", "color4", "color5", "color6"];
+
+        // 交互文字恢复原通用表述，去掉万圣节相关
+        function startSurprise() {
+            const isConfirm = confirm("确定要接收520份专属惊喜吗？");
+            if (isConfirm) {
+                let count = 0;
+                const interval = setInterval(() => {
+                    if (count < 520) {
+                        createTip();
+                        count++;
+                    } else {
+                        clearInterval(interval);
+                        alert("🎉 520份温馨提示已全部送达~ 愿你被满满的爱意包围！");
+                    }
+                }, 50); // 保持0.05秒弹出一个的速度
+            } else {
+                alert("没关系~ 惊喜随时为你准备，想打开时再回来哦~");
+            }
+        }
+
+        // 弹窗恢复原样式：💖图标+“提示”标题，内容通用
+        function createTip() {
+            const tipBox = document.createElement("div");
+            tipBox.className = `tip-box ${colors[Math.floor(Math.random() * colors.length)]}`;
+            
+            const tipHeader = document.createElement("div");
+            tipHeader.className = "tip-header";
+            tipHeader.innerHTML = '<span class="icon">💖</span>提示'; // 恢复原💖图标和标题
+            
+            const tipContent = document.createElement("div");
+            tipContent.className = "tip-content";
+            tipContent.textContent = tips[Math.floor(Math.random() * tips.length)];
+            
+            tipBox.appendChild(tipHeader);
+            tipBox.appendChild(tipContent);
+            document.body.appendChild(tipBox);
+
+            const winWidth = window.innerWidth;
+            const winHeight = window.innerHeight;
+            const boxWidth = 260;
+            const boxHeight = 90;
+            const left = Math.random() * (winWidth - boxWidth);
+            const top = Math.random() * (winHeight - boxHeight);
+            tipBox.style.left = `${left}px`;
+            tipBox.style.top = `${top}px`;
+            tipBox.style.width = `${boxWidth}px`;
+        }
+    </script>
+</body>
+</html>
